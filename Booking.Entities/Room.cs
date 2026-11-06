@@ -1,10 +1,10 @@
-namespace Booking.Entities
+namespace Booking.Entities;
+
+public class Room
 {
-    public class Room
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Capacity { get; set; }
-        public bool IsAvailable { get; set; }
-    }
+    public int Id { get; set; }
+    public string Name { get; set; } = "";
+    public int Capacity { get; set; }
+
+    public List<Reservation> Reservations { get; set; } = [];
 }

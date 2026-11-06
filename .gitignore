@@ -481,3 +481,6 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 *.db
+
+# fichiers à supprimer
+_to_delete/
