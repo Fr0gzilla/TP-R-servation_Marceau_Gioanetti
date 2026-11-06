@@ -19,9 +19,12 @@ public class ReservationRepository(AppDbContext context) : IReservationRepositor
         => await context.Reservations.FindAsync([id], ct);
 
     // deux créneaux se chevauchent si chacun commence avant que l'autre finisse
-    public Task<bool> OverlapsAsync(int roomId, DateTime startsAt, DateTime endsAt, CancellationToken ct)
+    // exceptId : au PUT, on ignore la réservation qu'on est en train de modifier
+    public Task<bool> OverlapsAsync(int roomId, DateTime startsAt, DateTime endsAt, int? exceptId, CancellationToken ct)
         => context.Reservations.AnyAsync(r =>
-            r.RoomId == roomId && r.StartsAt < endsAt && startsAt < r.EndsAt, ct);
+            r.RoomId == roomId &&
+            r.Id != exceptId &&
+            r.StartsAt < endsAt && startsAt < r.EndsAt, ct);
 
     public void Add(Reservation reservation) => context.Reservations.Add(reservation);
 

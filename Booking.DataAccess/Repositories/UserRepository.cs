@@ -15,8 +15,8 @@ public class UserRepository(AppDbContext context) : IUserRepository
     public Task<bool> ExistsAsync(int id, CancellationToken ct)
         => context.Users.AnyAsync(u => u.Id == id, ct);
 
-    public Task<bool> EmailExistsAsync(string email, CancellationToken ct)
-        => context.Users.AnyAsync(u => u.Email == email, ct);
+    public Task<bool> EmailExistsAsync(string email, int? exceptId, CancellationToken ct)
+        => context.Users.AnyAsync(u => u.Email == email && u.Id != exceptId, ct);
 
     public Task<bool> HasReservationsAsync(int id, CancellationToken ct)
         => context.Reservations.AnyAsync(r => r.UserId == id, ct);
