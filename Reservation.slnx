@@ -1,2 +1,7 @@
 <Solution>
+  <Project Path="Booking.Api/Booking.Api.csproj" />
+  <Project Path="Booking.DataAccess/Booking.DataAccess.csproj" />
+  <Project Path="Booking.Dto/Booking.Dto.csproj" />
+  <Project Path="Booking.Entities/Booking.Entities.csproj" />
+  <Project Path="Booking.Services/Booking.Services.csproj" />
 </Solution>
